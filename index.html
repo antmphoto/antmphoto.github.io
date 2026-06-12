@@ -320,27 +320,6 @@
       padding: 20px;
     }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
-    .gallery-overlay-text {
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--light);
-    }
-    .gallery-overlay-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--cream);
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    /* Placeholder tiles for demo */
-    .placeholder-img {
-      width: 100%;
-      display: block;
-      background: var(--surface);
-      aspect-ratio: attr(data-ratio);
-    }
 
     /* LIGHTBOX */
     .lightbox {
@@ -374,54 +353,45 @@
       font-family: 'Montserrat', sans-serif;
     }
     .lightbox-close:hover { color: var(--cream); }
-    .lightbox-caption {
-      margin-top: 20px;
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
 
-    /* INSTAGRAM */
-    .instagram { background: var(--deep); border-top: 1px solid var(--border); }
-    .insta-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 8px;
-      margin-bottom: 48px;
-    }
-    .insta-item {
-      aspect-ratio: 1;
-      background: var(--surface);
-      overflow: hidden;
-      position: relative;
-      cursor: none;
-    }
-    .insta-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s;
-      filter: brightness(0.82) saturate(0.9);
-    }
-    .insta-item:hover img { transform: scale(1.08); filter: brightness(1) saturate(1.1); }
-    .insta-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(10,10,10,0.6);
+    /* INSTAGRAM CTA */
+    .instagram-cta {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 120px 52px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .insta-item:hover .insta-overlay { opacity: 1; }
-    .insta-overlay svg { width: 24px; height: 24px; fill: white; }
-    .insta-cta {
       text-align: center;
+    }
+    .instagram-cta .section-label { margin-bottom: 20px; }
+    .instagram-cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .instagram-cta-title em { font-style: italic; color: var(--light); }
+    .instagram-cta-handle {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 52px;
+    }
+    .instagram-cta-line {
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin-bottom: 52px;
     }
     .btn-outline {
       display: inline-block;
-      padding: 14px 48px;
+      padding: 16px 56px;
       border: 1px solid var(--gold-dim);
       font-size: 0.6rem;
       letter-spacing: 0.35em;
@@ -440,9 +410,7 @@
 
     /* CONTACT */
     .contact { background: var(--black); }
-    .contact-inner {
-      max-width: 640px;
-    }
+    .contact-inner { max-width: 640px; }
     .contact p {
       font-size: 0.82rem;
       color: var(--muted);
@@ -521,12 +489,11 @@
       .hero-scroll { right: 28px; bottom: 60px; }
       .about-inner { grid-template-columns: 1fr; gap: 40px; }
       .gallery-grid { columns: 2; }
-      .insta-grid { grid-template-columns: repeat(3, 1fr); }
+      .instagram-cta { padding: 80px 28px; }
       footer { padding: 32px 28px; flex-direction: column; gap: 12px; text-align: center; }
     }
     @media (max-width: 600px) {
       .gallery-grid { columns: 1; }
-      .insta-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-title { font-size: 3rem; }
       nav { padding: 20px; }
       .nav-links { display: none; }
@@ -562,7 +529,7 @@
         Anthony<br>
         <em>Milius</em>
       </h1>
-      <p class="hero-sub"> <strong>Photographer - Capturing cars, portraits, and everything in between<strong></p>
+      <p class="hero-sub">Photographer — Capturing cars, portraits, and everything in between</p>
     </div>
     <div class="hero-scroll">
       <div class="scroll-line"></div>
@@ -581,141 +548,63 @@
       <button class="filter-btn" data-filter="portrait">Portrait</button>
     </div>
 
-    <!--
-      =====================================================
-      HOW TO ADD YOUR PHOTOS:
-      Replace the src="" in each <img> tag below with the
-      direct URL to your photo (from Instagram, Google Drive,
-      Dropbox, or your own server).
-
-      To add more photos, copy a .gallery-item block and
-      paste it inside .gallery-grid. Change:
-        - src="" → your image URL
-        - data-category="" → automotive | portrait | landscape
-        - data-title="" → photo caption
-      =====================================================
-    -->
     <div class="gallery-grid">
 
       <div class="gallery-item" data-category="automotive">
         <img src="DSC01404.webp" alt="Automotive" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
- 
+
       <div class="gallery-item" data-category="automotive">
         <img src="DSC01719.webp" alt="Automotive" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
- 
+
       <div class="gallery-item" data-category="automotive">
         <img src="DSC01913.webp" alt="Automotive" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
- 
+
       <div class="gallery-item" data-category="automotive">
         <img src="DSC05540.webp" alt="Automotive" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
- 
+
       <div class="gallery-item" data-category="automotive">
         <img src="DSC07313.webp" alt="Automotive" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
- 
+
       <div class="gallery-item" data-category="automotive">
         <img src="DSC08154.webp" alt="Automotive" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
 
       <div class="gallery-item" data-category="portrait">
-  <img src="DSC00410 - portrait.webp" alt="Portrait" loading="lazy" />
-  <div class="gallery-overlay"></div>
-</div>
+        <img src="DSC00410 - portrait.webp" alt="Portrait" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
 
       <div class="gallery-item" data-category="portrait">
-  <img src="DSC09682 - portrait.webp" alt="Portrait" loading="lazy" />
-  <div class="gallery-overlay"></div>
-</div>
+        <img src="DSC09682 - portrait.webp" alt="Portrait" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
 
       <div class="gallery-item" data-category="portrait">
-  <img src="DSC09795 - portrait.webp" alt="Portrait" loading="lazy" />
-  <div class="gallery-overlay"></div>
-</div>
+        <img src="DSC09795 - portrait.webp" alt="Portrait" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
 
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
-  <section class="instagram" id="instagram">
-    <p class="section-label reveal">Latest</p>
-    <h2 class="section-title reveal reveal-delay-1">From <em>Instagram</em></h2>
-
-    <!--
-      =====================================================
-      HOW TO ADD YOUR INSTAGRAM PHOTOS:
-      Replace the src="" in each .insta-item img tag with
-      the direct URL to your Instagram photo.
-
-      To get the URL: open your Instagram post in a browser,
-      right-click the photo → "Open image in new tab" →
-      copy that URL. Paste it as the src below.
-
-      To add/remove tiles: copy or delete .insta-item blocks.
-      =====================================================
-    -->
-    <div class="insta-grid reveal reveal-delay-2">
-
-      <a class="insta-item" href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=400&q=80" alt="Instagram photo" loading="lazy" />
-        <div class="insta-overlay">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-      </a>
-
-      <a class="insta-item" href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&q=80" alt="Instagram photo" loading="lazy" />
-        <div class="insta-overlay">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-      </a>
-
-      <a class="insta-item" href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&q=80" alt="Instagram photo" loading="lazy" />
-        <div class="insta-overlay">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-      </a>
-
-      <a class="insta-item" href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1622198751668-e7d82c0da12e?w=400&q=80" alt="Instagram photo" loading="lazy" />
-        <div class="insta-overlay">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-      </a>
-
-      <a class="insta-item" href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?w=400&q=80" alt="Instagram photo" loading="lazy" />
-        <div class="insta-overlay">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-      </a>
-
-      <a class="insta-item" href="https://instagram.com" target="_blank" rel="noopener">
-        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=400&q=80" alt="Instagram photo" loading="lazy" />
-        <div class="insta-overlay">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-      </a>
-
-    </div>
-
-    <div class="insta-cta reveal">
-      <!--
-        Update the href below with your actual Instagram profile URL
-        e.g. href="https://instagram.com/yourusername"
-      -->
-      <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-outline">Follow on Instagram</a>
-    </div>
+  <!-- INSTAGRAM CTA -->
+  <section class="instagram-cta" id="instagram">
+    <p class="section-label reveal">Instagram</p>
+    <h2 class="instagram-cta-title reveal reveal-delay-1">Follow the <em>Journey</em></h2>
+    <p class="instagram-cta-handle reveal reveal-delay-2">@antm.photo</p>
+    <div class="instagram-cta-line reveal reveal-delay-2"></div>
+    <a href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener" class="btn-outline reveal reveal-delay-3">Follow on Instagram</a>
   </section>
 
   <!-- ABOUT -->
@@ -727,22 +616,20 @@
         <p class="reveal reveal-delay-2">
           Based in <strong>New Jersey</strong>, Anthony Milius is a photographer specializing in automotive, portraits,
           and everything worth shooting. Shooting primarily with the <strong>Sony a7 III</strong>,
-          my work spans automotive photography, landscapes, and portraits. 
+          his work spans automotive photography, landscapes, and portraits.
         </p>
-        <p class="reveal reveal-delay-3">
-                  </p>
       </div>
       <div class="about-stats reveal reveal-delay-2">
         <div>
-          <div class="stat-num">Sony A7III</div>
+          <div class="stat-num" style="font-size:1.6rem;">Sony A7III</div>
           <div class="stat-label">Body</div>
         </div>
         <div>
-          <div class="stat-num">New Jersey</div>
+          <div class="stat-num" style="font-size:1.6rem;">New Jersey</div>
           <div class="stat-label">Based</div>
         </div>
         <div>
-          <div class="stat-num">Automotive</div>
+          <div class="stat-num" style="font-size:1.6rem;">Automotive</div>
           <div class="stat-label">Specialty</div>
         </div>
       </div>
@@ -758,11 +645,7 @@
         Available for automotive shoots, events, and collaborations across New Jersey and the surrounding area.
       </p>
       <div class="contact-links reveal reveal-delay-3">
-        <!--
-          Replace the href values below with your actual
-          email address and Instagram handle.
-        -->
-        <a href="mailto:your@email.com" class="contact-link">
+        <a href="mailto:antm.photo13@gmail.com" class="contact-link">
           <span class="contact-link-label">Email</span>
           antm.photo13@gmail.com
         </a>
@@ -784,7 +667,6 @@
   <div class="lightbox" id="lightbox">
     <button class="lightbox-close" id="lightboxClose">Close &times;</button>
     <img id="lightboxImg" src="" alt="" />
-    <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
 
   <script>
@@ -802,7 +684,7 @@
       ring.style.top = ry + 'px';
       requestAnimationFrame(animateCursor);
     })();
-    document.querySelectorAll('a, button, .gallery-item, .insta-item').forEach(el => {
+    document.querySelectorAll('a, button, .gallery-item').forEach(el => {
       el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
       el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
     });
@@ -834,17 +716,13 @@
     // --- Lightbox ---
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxClose = document.getElementById('lightboxClose');
 
     galleryItems.forEach(item => {
       item.addEventListener('click', () => {
         const img = item.querySelector('img');
-        const title = item.querySelector('.gallery-overlay-title');
-        const cat = item.querySelector('.gallery-overlay-text');
         lightboxImg.src = img.src;
         lightboxImg.alt = img.alt;
-        lightboxCaption.textContent = (title ? title.textContent + ' — ' : '') + (cat ? cat.textContent : '');
         lightbox.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
