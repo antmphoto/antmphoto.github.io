@@ -183,13 +183,14 @@ footer .brand:hover .brand-logo{opacity:1}
 .hero-card{
   position:relative;border-radius:var(--radius-lg);overflow:hidden;
   border:1px solid var(--line);background:var(--surface);
-  aspect-ratio:4/5;box-shadow:0 44px 90px -40px rgba(0,0,0,.9);
+  box-shadow:0 44px 90px -40px rgba(0,0,0,.9);
 }
 .hero-card-sm{
-  position:absolute;right:-18px;bottom:-38px;width:47%;aspect-ratio:1/1;
+  position:absolute;right:-16px;bottom:-30px;width:34%;
   border-radius:18px;overflow:hidden;border:1px solid var(--line-2);
   background:var(--surface-2);box-shadow:0 30px 60px -24px rgba(0,0,0,.95);
 }
+.hero-card img,.hero-card-sm img{width:100%;height:auto;display:block}
 .hero-badge{
   position:absolute;left:-14px;top:26px;z-index:3;
   background:rgba(10,10,11,.86);backdrop-filter:blur(10px);
@@ -244,16 +245,16 @@ footer .brand:hover .brand-logo{opacity:1}
 }
 .filter:hover{border-color:var(--line-2);color:var(--text)}
 .filter.active{background:var(--text);border-color:var(--text);color:#0A0A0B}
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+/* Masonry columns: every photo keeps its own aspect ratio, nothing is cropped. */
+.gallery{columns:3;column-gap:14px}
 .tile{
+  break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;
+  display:block;margin:0 0 14px;
   position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;
   border:1px solid var(--line);background:var(--surface);
-  grid-column:span 4;aspect-ratio:4/3;
-  transition:transform .45s var(--ease),border-color .3s,opacity .3s;
+  transition:transform .45s var(--ease),border-color .3s;
 }
-.tile.tall{grid-column:span 4;aspect-ratio:3/4}
-.tile.wide{grid-column:span 8;aspect-ratio:16/9}
-.tile.full{grid-column:span 12;aspect-ratio:21/9}
+.tile img{width:100%;height:auto;display:block}
 .tile:hover{transform:translateY(-4px);border-color:var(--line-2)}
 .tile.hide{display:none}
  
@@ -416,11 +417,11 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
    ============================================================ */
 @media (max-width:1024px){
   .hero-grid{grid-template-columns:1fr;gap:56px}
+  .gallery{columns:2}
   .hero-stack{max-width:460px}
   .book-grid{grid-template-columns:1fr;gap:40px}
   .cards{grid-template-columns:1fr;max-width:520px}
   .steps{grid-template-columns:repeat(2,1fr);gap:30px}
-  .quotes{grid-template-columns:1fr;max-width:560px}
   .ig-grid{grid-template-columns:repeat(3,1fr)}
   .trust-grid{grid-template-columns:repeat(2,1fr)}
   .trust-item:nth-child(2){border-right:0}
@@ -430,9 +431,8 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
   .section{padding:76px 0}
   .nav-links,.nav-cta .btn{display:none}
   .burger{display:flex}
-  .gallery{grid-template-columns:repeat(2,1fr);gap:10px}
-  .tile,.tile.tall,.tile.wide{grid-column:span 1;aspect-ratio:1/1}
-  .tile.full{grid-column:span 2;aspect-ratio:16/10}
+  .gallery{columns:2;column-gap:10px}
+  .tile{margin-bottom:10px}
   .brand-logo{height:38px}
   .form{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:26px}
@@ -503,16 +503,10 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
     <div class="hero-stack">
       <div class="hero-badge">Sony A7 III</div>
       <div class="hero-card">
-        <div class="media">
-          <div class="ph"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h3l2-3h8l2 3h3v13H3z"/><circle cx="12" cy="13" r="4"/></svg></i></div>
-          <img src="DSC09276%20-%20RS5%20R8.webp" alt="Audi RS5 and R8 automotive photograph" loading="eager" onerror="this.remove()">
-        </div>
+        <img src="DSC09276%20-%20RS5%20R8.webp" alt="Audi RS5 and R8 automotive photograph" loading="eager">
       </div>
       <div class="hero-card-sm">
-        <div class="media">
-          <div class="ph"></div>
-          <img src="DSC00410%20-%20portrait.webp" alt="Portrait photograph" loading="lazy" onerror="this.remove()">
-        </div>
+        <img src="DSC00410%20-%20portrait.webp" alt="Portrait photograph" loading="lazy">
       </div>
     </div>
   </div>
@@ -549,39 +543,17 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
       <!-- Files live in the repo root, same as your current site.
            Spaces in filenames are written as %20 so every browser resolves them.
            Edit data-title to give each shot a real caption (year / make / model). -->
-      <article class="tile wide" data-cat="automotive" data-title="Automotive feature" data-src="DSC01404.webp">
-        <div class="media"><div class="ph"></div><img src="DSC01404.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile tall" data-cat="portrait" data-title="Portrait session" data-src="DSC09795%20-%20portrait.webp">
-        <div class="media"><div class="ph"></div><img src="DSC09795%20-%20portrait.webp" alt="Portrait photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC03673.webp">
-        <div class="media"><div class="ph"></div><img src="DSC03673.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC03471.webp">
-        <div class="media"><div class="ph"></div><img src="DSC03471.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC01719.webp">
-        <div class="media"><div class="ph"></div><img src="DSC01719.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile tall" data-cat="portrait" data-title="Portrait session" data-src="DSC09682%20-%20portrait.webp">
-        <div class="media"><div class="ph"></div><img src="DSC09682%20-%20portrait.webp" alt="Portrait photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile wide" data-cat="automotive" data-title="Group shoot — three BMW M2s" data-src="DSC00699%20-%203%20M2.webp">
-        <div class="media"><div class="ph"></div><img src="DSC00699%20-%203%20M2.webp" alt="Three BMW M2s photographed together" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC01913.webp">
-        <div class="media"><div class="ph"></div><img src="DSC01913.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC05540.webp">
-        <div class="media"><div class="ph"></div><img src="DSC05540.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC07313.webp">
-        <div class="media"><div class="ph"></div><img src="DSC07313.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
-      <article class="tile full" data-cat="automotive" data-title="Automotive feature" data-src="DSC08154.webp">
-        <div class="media"><div class="ph"></div><img src="DSC08154.webp" alt="Automotive photograph" loading="lazy" onerror="this.remove()"></div>
-      </article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC01404.webp"><img src="DSC01404.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="portrait" data-title="Portrait session" data-src="DSC09795%20-%20portrait.webp"><img src="DSC09795%20-%20portrait.webp" alt="Portrait photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC03673.webp"><img src="DSC03673.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC03471.webp"><img src="DSC03471.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC01719.webp"><img src="DSC01719.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="portrait" data-title="Portrait session" data-src="DSC09682%20-%20portrait.webp"><img src="DSC09682%20-%20portrait.webp" alt="Portrait photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Group shoot — three BMW M2s" data-src="DSC00699%20-%203%20M2.webp"><img src="DSC00699%20-%203%20M2.webp" alt="Three BMW M2s photographed together" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC01913.webp"><img src="DSC01913.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC05540.webp"><img src="DSC05540.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC07313.webp"><img src="DSC07313.webp" alt="Automotive photograph" loading="lazy"></article>
+      <article class="tile" data-cat="automotive" data-title="Automotive feature" data-src="DSC08154.webp"><img src="DSC08154.webp" alt="Automotive photograph" loading="lazy"></article>
     </div>
   </div>
 </section>
@@ -617,7 +589,8 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
         <p class="card-foot">Travel past ~60 miles or multi-car group shoots quoted upfront — never after.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
  
 <hr class="rule">
  
@@ -651,12 +624,12 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
     </div>
     <div class="ig-grid reveal">
       <!-- These reuse portfolio files. Swap in your six most recent posts when you have them. -->
-      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC03471.webp" alt="Instagram post" loading="lazy" onerror="this.remove()"></div></a>
-      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC01719.webp" alt="Instagram post" loading="lazy" onerror="this.remove()"></div></a>
-      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC00410%20-%20portrait.webp" alt="Instagram post" loading="lazy" onerror="this.remove()"></div></a>
-      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC07313.webp" alt="Instagram post" loading="lazy" onerror="this.remove()"></div></a>
-      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC01913.webp" alt="Instagram post" loading="lazy" onerror="this.remove()"></div></a>
-      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC05540.webp" alt="Instagram post" loading="lazy" onerror="this.remove()"></div></a>
+      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC03471.webp" alt="Instagram post" loading="lazy"></div></a>
+      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC01719.webp" alt="Instagram post" loading="lazy"></div></a>
+      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC00410%20-%20portrait.webp" alt="Instagram post" loading="lazy"></div></a>
+      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC07313.webp" alt="Instagram post" loading="lazy"></div></a>
+      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC01913.webp" alt="Instagram post" loading="lazy"></div></a>
+      <a class="ig" href="https://www.instagram.com/antm.photo/" target="_blank" rel="noopener"><div class="media"><div class="ph"></div><img src="DSC05540.webp" alt="Instagram post" loading="lazy"></div></a>
     </div>
   </div>
 </section>
@@ -909,7 +882,7 @@ footer{border-top:1px solid var(--line);padding:52px 0 40px}
     var src = t.dataset.src;
     lbMedia.innerHTML =
       '<div class="ph"></div>' +
-      '<img src="' + src + '" alt="' + (t.dataset.title || "") + '" onerror="this.remove()">';
+      '<img src="' + src + '" alt="' + (t.dataset.title || "") + '">';
     lbTitle.textContent = t.dataset.title || "";
     lbCat.textContent = (t.dataset.cat || "").toUpperCase();
   }
